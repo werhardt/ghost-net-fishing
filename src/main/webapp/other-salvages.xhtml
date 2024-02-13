@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Ghost Net Fishing</title>
+    <link rel="stylesheet" href="./style.css" />
+</h:head>
+<h:body>
+
+
+    <h1>Ghost Net Fishing</h1>
+
+    <h:form style="text-align: center;">
+        <p:commandButton value="Abmelden" action="#{loginController.doLogout()}" ajax="false" />
+    </h:form>
+
+     <h:form style="text-align: center;">
+        <p:commandButton value="Meine Bergungen" action="my-salvages.xhtml" styleClass="ui-button-secondary link-button" />
+        <p:commandButton value="Noch zu bergende Netze" action="open-salvages.xhtml" styleClass="link-button ui-button-secondary" />
+        <p:commandButton value="Weitere Netze in Bergung" action="other-salvages.xhtml" styleClass="ui-button-secondary" />
+    </h:form>
+
+    <p:card style="margin-bottom: 2em" styleClass="net-table">
+        <f:facet name="title">Weitere Netze in Bergung</f:facet>
+
+        <p:dataTable var="net" value="#{summaryController.getPendingNets(loginController.loggedInPerson.id)}">
+            <p:column headerText="Standort">
+               <h:outputText value="Latitude #{net.locationLatitude} - Longitude #{net.locationLongitude}" />
+            </p:column>
+
+            <p:column headerText="Geschätzte Größe">
+               <h:outputText value="#{net.size}" />
+            </p:column>
+
+            <p:column headerText="Berger - Name">
+               <h:outputText value="#{net.getSalvagerName()}" />
+            </p:column>
+
+            <p:column headerText="Berger - Telefon">
+                <h:outputText value="#{net.getSalvagerPhone()}" />
+            </p:column>
+
+            <p:column headerText="Melder - Name">
+               <h:outputText value="#{net.getReporterName()}" />
+            </p:column>
+
+            <p:column headerText="Melder - Telefon">
+                <h:outputText value="#{net.getReporterPhone()}" />
+            </p:column>
+        </p:dataTable>
+    </p:card>
+
+</h:body>
+</html>
+

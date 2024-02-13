@@ -1,0 +1,29 @@
+body {
+	color: #495057;
+	font-family: "Helvetica Neue", Arial;
+	background-color: #f9fcff;
+}
+
+.center {
+	margin: auto;
+	width: 50%;
+	padding: 10px;
+}
+
+.ui-card-title {
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+}
+
+.link-button {
+	margin-right: 5rem !important;
+}
+
+.net-table {
+	margin: auto;
+    width: 110rem;
+    padding: 10px;
+}
