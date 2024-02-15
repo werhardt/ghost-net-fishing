@@ -43,23 +43,28 @@
 
                 <h:outputLabel value="Meldende Person Name" for="reporterName" />
                 <p:inputText id="reporterName" value="#{reportController.reporterName}" />
-                <h:outputLabel value="(optional)" />
+                <h:outputLabel value=" " />
 
                 <h:outputLabel value="Meldende Person Telefon" for="reporterPhone" />
                 <p:inputText id="reporterPhone" value="#{reportController.reporterPhone}" />
-                <h:outputLabel value="(optional)" />
+                <h:outputLabel value=" " />
 
-                <h:outputLabel value="Standort - Latitude" for="locationLatitude" />
-                <p:inputText id="locationLatitude" value="#{reportController.locationLatitude}" />
-                <h:outputLabel value="*" />
+                <h:outputLabel value="Standort - Latitude *" for="locationLatitude" />
+                <p:inputText id="locationLatitude" value="#{reportController.locationLatitude}" validatorMessage="Kein gültiger Wert.">
+                    <f:validateRegex pattern="\d{1,2}\.\d*" />
+                </p:inputText>
+                <p:message for="locationLatitude"/>
+                
 
-                <h:outputLabel value="Standort - Longitude" for="locationLongitude" />
-                <p:inputText id="locationLongitude" value="#{reportController.locationLongitude}" />
-                <h:outputLabel value="*" />
+                <h:outputLabel value="Standort - Longitude *" for="locationLongitude" />
+                <p:inputText id="locationLongitude" value="#{reportController.locationLongitude}" validatorMessage="Kein gültiger Wert." >
+                    <f:validateRegex pattern="\d{1,3}\.\d*" />
+                </p:inputText>
+                <p:message for="locationLongitude"/>
 
-                <h:outputLabel value="Geschätzte Größe" for="size" />
-                <p:inputText id="size" value="#{reportController.size}" />
-                <h:outputLabel value="*" />
+                <h:outputLabel value="Geschätzte Größe *" for="size" />
+                <p:inputText id="size" label="Geschätzte Größe" value="#{reportController.size}" required="true" />
+                <p:message for="size"/>
 
                 <h:outputLabel value=" " />
                 <p:commandButton value="Geisternetz melden" action="#{reportController.reportGhostNet()}" ajax="false" />
