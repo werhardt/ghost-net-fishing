@@ -14,16 +14,19 @@
         <f:facet name="title">Anmeldung</f:facet>
 
         <h:form>
-            <p:panelGrid columns="2" styleClass="ui-noborder">
+            <p:panelGrid columns="3" styleClass="ui-noborder">
 
                 <h:outputLabel value="Login:" for="login" />
-                <p:inputText id="login" value="#{loginController.login}" />
+                <p:inputText id="login" label="Login" value="#{loginController.login}" required="true" />
+                <p:message for="login"/>
 
                 <h:outputLabel value="Passwort:" for="password" />
-                <p:password id="password" value="#{loginController.password}" />
+                <p:password id="password" label="Passwort" value="#{loginController.password}" required="true" />
+                <p:message for="password"/>
 
                 <h:outputLabel value=" " />
                 <p:commandButton value="Anmelden" action="#{loginController.doLogin()}" ajax="false" />
+                <h:outputLabel value=" " />
             </p:panelGrid>
         </h:form>
 
